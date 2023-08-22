@@ -8,7 +8,8 @@ def homepage():
 
 @app.route("/about")
 def about():
-    return "<p>Hello oke oke<p>"
+    return render_template("about.html")
+
 
 
 
