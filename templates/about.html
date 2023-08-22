@@ -1,11 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h1>About App</h1>
+<h3>Description</h3>
+<p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Veritatis reprehenderit a voluptatum doloremque nobis quas cum saepe quae neque aspernatur, vitae molestias
+    consectetur ex nemo eius illum sit porro laborum quaerat iure ea architecto officia.
+    Numquam adipisci maiores velit dolorum aut delectus dicta veniam saepe ullam cupiditate temporibus non, tempore
+    voluptate ipsa incidunt, placeat commodi unde eaque.
+    Vel cumque illum voluptatem? Necessitatibus minus dignissimos, vitae est facilis expedita, dicta excepturi illo
+    assumenda modi, sunt quam facere! Eos optio pariatur sint quod ipsum earum saepe obcaecati beatae in molestiae
+    mollitia quia, totam cum tenetur repudiandae provident sed ipsa voluptatem eius laboriosam? Ullam, perferendis! Quo
+    porro atque eveniet nisi, id possimus explicabo laudantium, modi dolor facilis veniam ipsa necessitatibus.
+    Esse nobis qui minima adipisci excepturi praesentium id odit accusantium repellat maiores, tempore nihil! Ex
+    voluptatum veniam fuga quo deleniti facere atque molestias eaque maxime, molestiae iure expedita corrupti nam,
+    accusamus nobis accusantium? Tempore dolorem minus quod officia voluptatum possimus facere quidem, ducimus, repellat
+    harum nobis numquam tempora neque sit? Reprehenderit assumenda, natus obcaecati quaerat atque, perferendis quia
+    beatae deleniti iste in ex ad voluptatum ipsam officia sapiente.
+    Blanditiis nostrum exercitationem voluptatem ratione, deserunt nulla deleniti obcaecati eligendi quod ipsa dolorem
+    sed consequuntur.</p>
+<div class="container-lg">
+    <h2>How this works?</h2>
+    <p>input essay -> ai scoring -> display grade</p>
+</div>
+<footer>
+    <h4>Contact Us</h4>
+    <p>
+        <i class="fa-solid fa-phone"></i>
+        08152788970
+    </p>
+    <p>
+        <i class="fa-brands fa-whatsapp"></i>
+        08152788970
+    </p>
+</footer>
+{% endblock %}

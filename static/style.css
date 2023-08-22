@@ -1,0 +1,38 @@
+body {
+    background-color: #5085B6;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container-lg {
+    padding: 15px;
+    background-color: #f8f8f8;
+
+    h2 {
+        text-align: center;
+    }
+
+}
+
+h3 {
+    text-align: center;
+    color: #f8f8f8;
+}
+
+h4 {
+    text-align: left;
+    color: #f8f8f8;
+}
+
+footer {
+    margin: 5px;
+    padding: 5px;
+    color: #f8f8f8;
+}
+
+.desc {
+    color: #f8f8f8;
+    margin: 10px;
+}
