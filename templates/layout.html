@@ -21,8 +21,9 @@
 
         <h1 style="color: whitesmoke;">Welcome!</h1>
 
-        <button class="hamburger-button">
-          <i class="animated-hamburger fa-2x fa-solid fa-bars" style="color: whitesmoke;"></i>
+        <button class="hamburger-button" onclick="document.querySelector('.animated-hamburger').classList.toggle('open')" style="background-color: transparent; border: none;">
+          <!-- <i class="animated-hamburger fa-2x fa-solid fa-bars" style="color: whitesmoke;"></i> -->
+          <div class="animated-hamburger"><span></span><span></span><span></span></div>
         </button>
         
 
@@ -36,6 +37,7 @@
     &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
     {% endblock %}
   </div>
+
 </body>
 
 </html>
