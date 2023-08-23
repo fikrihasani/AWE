@@ -10,6 +10,18 @@ def homepage():
 def about():
     return render_template("about.html")
 
+@app.route("/register")
+def about():
+    return render_template("register.html")
+
+@app.route("/login")
+def about():
+    return render_template("login.html")
+
+@app.route("/essay")
+def about():
+    return render_template("essay.html")
+
 if __name__=='__main__':
     app.run(debug=True)
     
