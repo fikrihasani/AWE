@@ -86,21 +86,33 @@ footer {
 
 .animated-hamburger.open span:nth-child(1) {
     top: 11px;
+    background-color: #3976AC;
     -webkit-transform: rotate(135deg);
     -moz-transform: rotate(135deg);
     -o-transform: rotate(135deg);
     transform: rotate(135deg);
-  }
-  
-  .animated-hamburger.open span:nth-child(2) {
+}
+
+.animated-hamburger.open span:nth-child(2) {
     opacity: 0;
     left: -60px;
-  }
-  
-  .animated-hamburger.open span:nth-child(3) {
+}
+
+.animated-hamburger.open span:nth-child(3) {
     top: 11px;
+    background-color: #3976AC;
     -webkit-transform: rotate(-135deg);
     -moz-transform: rotate(-135deg);
     -o-transform: rotate(-135deg);
     transform: rotate(-135deg);
-  }
+}
+
+.sidebar.collapse{
+    display: block;
+    width: 0;
+    transition: width 1s ease;
+}
+
+.sidebar.collapse.show{
+    width: 400px;
+}

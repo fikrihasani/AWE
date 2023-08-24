@@ -9,13 +9,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     {% endblock %}
   </head>
-  <body>
+  <body style="position: relative;">
     {% block nav %}
     <div class="wrapper">
-      <div class="sidebar fixed-right" style="height: 100vh; width: 300px;  background-color: aqua;">
-        <div class="container"></div>
-      </div>
-      <div class="content">
+      <div class="heading">
         <nav class="navbar navbar-expand-lg" style="text-align: center; background-color: #3976AC;">
           <div class="container-fluid" style="margin: 1vw 2vw;">
     
@@ -25,23 +22,65 @@
     
             <h1 style="color: whitesmoke;">Welcome!</h1>
     
-            <button class="hamburger-button" onclick="document.querySelector('.animated-hamburger').classList.toggle('open')" style="background-color: transparent; border: none;">
+            <button class="hamburger-button btn" onclick="document.querySelector('.animated-hamburger').classList.toggle('open'); document.querySelector('.collapse').classList.toggle('show')" style="background-color: transparent; border: none; z-index: 2;">
               <!-- <i class="animated-hamburger fa-2x fa-solid fa-bars" style="color: whitesmoke;"></i> -->
               <div class="animated-hamburger"><span></span><span></span><span></span></div>
             </button>
           </div>
         </nav>
       </div>
-    </div>
     
-  {% endblock %}
-  <div id="content">{% block content %}{% endblock %}</div>
-  <div id="footer">
-    {% block footer %}
-    &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
-    {% endblock %}
-  </div>
-
-</body>
+      
+      {% endblock %}
+      <div id="content">{% block content %}{% endblock %}</div>
+      <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
+        {% endblock %}
+      </div>
+    </div> <!-- close wrapper div-->
+    <div id="collapseSidebar" class="sidebar collapse position-fixed top-0 end-0" style="position: fixed; height: 100vh; background-color: #7EC7F0;">
+      <div class="container-fluid" style="height: 100%;">
+        <div class="row row-cols-1" style=" height: 100%;">
+          <div class="col d-flex align-items-center" style="height: 45%; ">
+            <div class="container profile-picture">
+              <div class="row justify-content-center" style="height: auto;">
+                <div class="col-6">
+                  <img src="{{ url_for('static', filename='/assets/default_profile.png') }}" alt="" class="img-fluid">
+                </div>
+              </div>
+              <div class="row-cols-1" style="margin-top: 20px; height: auto;">
+                <div class="col-12 text-center" style="margin-top: 20px; background-color: aqua;">
+                  Username
+                </div>
+                <div class="col-12 text-center">
+                  Email
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="col d-flex align-items-start" style="height: 55%;">
+            <div class="container navbar-links">
+              <div class="row-cols-1 text-center">
+                <div class="col" style="margin: 50px 0;">
+                  Home
+                </div>
+                <div class="col" style="margin: 50px 0;">
+                  Add Essay
+                </div>
+                <div class="col" style="margin: 50px 0;">
+                  About App
+                </div>
+                <div class="col" style="margin: 50px 0;">
+                  Log Out
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 
 </html>
