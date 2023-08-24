@@ -12,24 +12,29 @@
   </head>
   <body>
     {% block nav %}
-    <nav class="navbar navbar-expand-lg" style="text-align: center; background-color: #3976AC;">
-      <div class="container-fluid" style="margin: 1vw 2vw;">
-
-        <a class="navbar-brand" href="{{url_for('homepage')}}">
-          <img src="{{url_for('static', filename='assets/logo.png')}}" alt="" class="img-fluid" width="70px">
-        </a>
-
-        <h1 style="color: whitesmoke;">Welcome!</h1>
-
-        <button class="hamburger-button" onclick="document.querySelector('.animated-hamburger').classList.toggle('open')" style="background-color: transparent; border: none;">
-          <!-- <i class="animated-hamburger fa-2x fa-solid fa-bars" style="color: whitesmoke;"></i> -->
-          <div class="animated-hamburger"><span></span><span></span><span></span></div>
-        </button>
-        
-
+    <div class="wrapper">
+      <div class="sidebar fixed-right" style="height: 100vh; width: 300px;  background-color: aqua;">
+        <div class="container"></div>
+      </div>
+      <div class="content">
+        <nav class="navbar navbar-expand-lg" style="text-align: center; background-color: #3976AC;">
+          <div class="container-fluid" style="margin: 1vw 2vw;">
+    
+            <a class="navbar-brand" href="{{url_for('homepage')}}">
+              <img src="{{url_for('static', filename='assets/logo.png')}}" alt="" class="img-fluid" width="70px">
+            </a>
+    
+            <h1 style="color: whitesmoke;">Welcome!</h1>
+    
+            <button class="hamburger-button" onclick="document.querySelector('.animated-hamburger').classList.toggle('open')" style="background-color: transparent; border: none;">
+              <!-- <i class="animated-hamburger fa-2x fa-solid fa-bars" style="color: whitesmoke;"></i> -->
+              <div class="animated-hamburger"><span></span><span></span><span></span></div>
+            </button>
+          </div>
+        </nav>
       </div>
     </div>
-  </nav>
+    
   {% endblock %}
   <div id="content">{% block content %}{% endblock %}</div>
   <div id="footer">
