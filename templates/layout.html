@@ -42,7 +42,7 @@
     <div id="collapseSidebar" class="sidebar collapse position-fixed top-0 end-0" style="position: fixed; height: 100vh; background-color: #7EC7F0;">
       <div class="container-fluid" style="height: 100%;">
         <div class="row row-cols-1" style=" height: 100%;">
-          <div class="col d-flex align-items-center" style="height: 45%; ">
+          <div class="col d-flex align-items-center" style="height: 45%;">
             <div class="container profile-picture">
               <div class="row justify-content-center" style="height: auto;">
                 <div class="col-6">
@@ -50,10 +50,11 @@
                 </div>
               </div>
               <div class="row-cols-1" style="margin-top: 20px; height: auto;">
-                <div class="col-12 text-center" style="margin-top: 20px; background-color: aqua;">
+                <div class="col-12 text-center" style="margin-top: 20px;">
                   Username
+                  <button data-bs-toggle="modal" data-bs-target="#profileModal" style="background-color: transparent; border: none;"><i id="editProfile" class="fas fa-edit"></i></a>
                 </div>
-                <div class="col-12 text-center">
+                <div class="col-12 text-center" style="margin-top: 8px;">
                   Email
                 </div>
               </div>
@@ -64,18 +65,48 @@
             <div class="container navbar-links">
               <div class="row-cols-1 text-center">
                 <div class="col" style="margin: 50px 0;">
-                  Home
+                  <a href="{{url_for('homepage')}}">Home</a>
                 </div>
                 <div class="col" style="margin: 50px 0;">
-                  Add Essay
+                  <a href="{{url_for('essay')}}">Add Essay</a>
                 </div>
                 <div class="col" style="margin: 50px 0;">
-                  About App
+                  <a href="{{url_for('about')}}">About App</a>
                 </div>
                 <div class="col" style="margin: 50px 0;">
-                  Log Out
+                  <a href="{{url_for('login')}}">Log Out</a>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="profileModal" class="modal modal-lg" style="background-color: #0000004e;">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"  style="background-color: #1E4071; color: whitesmoke; padding: 70px 30px; border-radius: 30px;">
+          <div class="row">
+            <div class="col-5 text-center align-self-center">
+              <img src="{{url_for('static', filename='/assets/default_profile.png')}}" alt="" class="img-fluid">
+              <p style="margin-top: 30px;"><input type="text" value="Username" style="text-align: center; background-color: transparent; border: none; color: whitesmoke;"></p>
+            </div>
+            <div class="col-6 align-self-center">
+              <div class="vstack gap-4">
+                <div class="box">
+                  <p>Email</p>
+                  <input class="form-control" type="text" value="test@gmail.com">
+                </div>
+                <div class="box">
+                  <p>Password</p>
+                  <input class="form-control" type="text" value="password123">
+                </div>
+                <button class="btn align-self-center" style="background-color: #000938; color: whitesmoke; width: auto; padding: 7px 30px 9px; border-radius: 15px; margin-top: 10px;">
+                  Save
+                </button>
+              </div>
+            </div>
+            <div class="col-1" style="margin-top: -30px; margin-right: -30px;">
+              <button class="btn-close btn-close-white" data-bs-dismiss="modal" data-bs-target="#profileModal"></button>
             </div>
           </div>
         </div>
