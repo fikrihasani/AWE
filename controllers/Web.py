@@ -25,7 +25,8 @@ class Calculate:
         # dummy data
                 # this will be used to handle result data to template of result
         focus = 7
-        ideas = 7
+        ideas = 4
+
         res = {
             "focus":focus,
             "ideas":ideas 
