@@ -8,22 +8,33 @@
 {% endblock %}
 {% block content %}
 <h1>About App</h1>
-<h3>Description</h3>
-<p class="desc">Automated Paper Evaluator for EFL is an automated paper tool dedicated to English as Foreign Language (EFL) users. 
-    The measures are contextualized for EFL's academic writing.</p>
-<div class="container-lg">
-    <h2>How this works?</h2>
-    <p>input essay -> ai scoring -> display grade</p>
+
+<div class="container-lg text-center">
+    <img src="{{url_for('static', filename='assets/logo.png')}}" alt="" style = "background-color: #3976AC;" class="img-fluid" width="300px">
+    <br>
+    <h3 style="color: black;">Description</h3>
+    <p style="color: black;" class="desc">Automated Paper Evaluator for EFL is an automated paper tool dedicated to
+        English as Foreign Language (EFL) users.
+        The measures are contextualized for EFL's academic writing.</p>
+    <br>
+</div>
+
+<div class="container-lg" style="padding: 15px; background-color: #f8f8f8;">
+    <h2 style="text-align: center;">How this works?</h2>
+    <p>This tool is dedicated mainly for EFL teachers. By submiting students academic paper, the tool will provide a
+        score and brief feedback. Once the essay is inputted the result will be recorded on front page.
+        The score and feedback are not final score, but come as a basis of further writing improvement.</p>
 </div>
 <footer>
-    <h4>Contact Us</h4>
-    <p>
-        <i class="fa-solid fa-phone"></i>
-        08152788970
-    </p>
-    <p>
-        <i class="fa-brands fa-whatsapp"></i>
-        08152788970
-    </p>
+    <h4 style="color: black;">Contact Us</h4>
+    <div class="container-fluid d-flex" style="">
+        <i style="color: black;" class="fa-solid fa-phone"></i>
+        <p style="color: black; margin-left: 10pt; margin-top: -5px;"> +62 855-1007-551 </p>
+    </div>
+
+    <div class="container-fluid d-flex" style="">
+        <i style="color: black;" class="fa-brands fa-whatsapp"></i>
+        <p style="color: black; margin-left: 10pt; margin-top: -5px;"> +62 855-1007-551 </p>
+    </div>
 </footer>
 {% endblock %}
