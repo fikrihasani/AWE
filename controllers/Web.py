@@ -1,17 +1,29 @@
+from Models import Article
+
+# class web
 class Web:
     def __init__(self):
-        pass
+        self.article = Article()
+        self.calc = Calculate()
 
     def home(self):
         # this is text to render
-        n = 12
-        ls = []
-        for i in range(n):
-            ls.append("This is history of the essay used: "+i)
-        return ls
+        # ambil data dari database
+        return self.article.getAll()
+
+    def register(self):
+        pass
 
     def result(self):
-        # this will be used to handle result data to template of result
+        return self.calc.get_res()
+
+class Calculate:
+    def __init__(self) -> None:
+        self.model = None
+
+    def get_res(self):
+        # dummy data
+                # this will be used to handle result data to template of result
         focus = 7
         ideas = 7
         res = {
