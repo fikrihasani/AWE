@@ -4,6 +4,7 @@ from flask import render_template, url_for
 from controllers.Web import Web
 from Database import Database
 from Models.Users import Users
+
 app = Flask(__name__)
 app.secret_key="__privatekey"
 
@@ -57,6 +58,13 @@ def create():
             return redirect(url_for('homepage'))
     return render_template('create.html')
 
+@app.route('/users')
+def users():
+    user = Users()
+    data = user.getAll()
+    for dat in data:
+        print(dat['email'])
+    return []
 if __name__=='__main__':
     app.run(debug=True)
     
