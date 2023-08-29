@@ -1,12 +1,17 @@
 from flask import Flask
-from flask import render_template, url_for, redirect, flash, request
-from flask_sqlalchemy import SQLAlchemy
+import sqlite3
+from flask import render_template, url_for
 from controllers.Web import Web
-
+from Database import Database
+from Models.Users import Users
 app = Flask(__name__)
 app.secret_key="__privatekey"
 
 web = Web()
+def get_db_connection():
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @app.route("/")
 def homepage():

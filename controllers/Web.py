@@ -1,4 +1,4 @@
-from Models import Article
+from Models.Article import Article
 
 # class web
 class Web:
