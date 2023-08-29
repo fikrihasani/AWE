@@ -18,6 +18,10 @@ def about():
 def register():
     return render_template("register.html")
 
+@app.route("/otp")
+def otp():
+    return render_template("otp.html")
+
 @app.route("/login")
 def login():
     return render_template("login.html")
