@@ -1,11 +1,21 @@
-from flask import Flask
-from flask import render_template
-
 class Web:
     def __init__(self):
-        self.flask = Flask(__name__)
-        self.a = 0
+        pass
 
     def home(self):
-        self.flask.route("/")
-        return render_template("home.html")
+        # this is text to render
+        n = 12
+        ls = []
+        for i in range(n):
+            ls.append("This is history of the essay used: "+i)
+        return ls
+
+    def result(self):
+        # this will be used to handle result data to template of result
+        focus = 7
+        ideas = 7
+        res = {
+            "focus":focus,
+            "ideas":ideas 
+        }
+        return res
