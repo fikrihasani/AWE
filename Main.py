@@ -1,10 +1,14 @@
 from flask import Flask
 from flask import render_template, url_for
+from controllers.Web import Web
 app = Flask(__name__)
+
+web = Web()
 
 @app.route("/")
 def homepage():
-    return render_template("home.html")
+    articles = web.home()
+    return render_template("home.html",articles=articles)
 
 @app.route("/about")
 def about():
@@ -20,7 +24,8 @@ def login():
 
 @app.route("/essay")
 def essay():
-    return render_template("essay.html")
+    result = web.result()
+    return render_template("essay.html", result = result)
 
 if __name__=='__main__':
     app.run(debug=True)
