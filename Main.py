@@ -4,6 +4,7 @@ from flask import render_template, url_for, request, redirect
 from controllers.Web import Web
 from Database import Database
 from Models.Users import Users
+from Models.Article import Article
 
 app = Flask(__name__)
 app.secret_key="__privatekey__"
@@ -31,13 +32,8 @@ def register():
         email  =  request.form['email']
         password = request.form['password']
 
-        conn = get_db_connection()
-        # cursor = conn.cursor()
-        conn.execute('INSERT INTO user (username, email, pass) VALUES (?, ?, ?)',
-                       (username, email, password))
-        
-        conn.commit()
-        conn.close()
+        user = Users()
+        user.insert(username, email, password)
 
         return redirect(url_for('homepage'))
 
@@ -51,26 +47,32 @@ def otp():
 def login():
     return render_template("login.html")
 
-@app.route("/essay")
+@app.route("/essay", methods=('GET', 'POST'))
 def essay():
     result = web.result()
+
+    if request.method == 'POST':
+        essay  = request.form['essayInput']
+        userID = 1
+
+        article = Article()
+        article.insert(essay, userID)
+
+        return redirect(url_for('essay'))
+    
     return render_template("essay.html", result = result)
+
+@app.route("/printEssay")
+def printEssay():
+    article = Article()
+    data = article.getAll2()
+    return render_template("printEssay.html", essays=data)
 
 @app.route('/users')
 def users():
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM user')
-    users = cursor.fetchall()
-    conn.close()
-    
-    return render_template('users.html', users=users)
-
-    # user = Users()
-    # data = user.getAll()
-    # for dat in data:
-    #     print(dat['email'])
-    # return []
+    user = Users()
+    data = user.getAll()
+    return render_template('users.html', users=data)
 
 if __name__=='__main__':
     app.run(debug=True)
