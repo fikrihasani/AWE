@@ -17,8 +17,10 @@ def get_db_connection():
 
 @app.route("/")
 def homepage():
-    articles=web.home()
-    return render_template("home.html",articles=articles)
+    article = Article()
+    data = article.getOne(1)
+    return render_template("home.html", articles=data)
+    
 
 @app.route("/about")
 def about():

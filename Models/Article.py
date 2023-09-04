@@ -18,7 +18,10 @@ class Article:
         return data
     
     def getOne(self,id):
-        return []
+        self.data = []
+        data = self.conn.execute("SELECT * FROM essay where userId = "+str(id)).fetchall()
+        self.conn.close()
+        return data 
     
     def getAll2(self):
         self.data = []
