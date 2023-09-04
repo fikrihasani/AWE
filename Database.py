@@ -4,3 +4,7 @@ class Database:
         self.conn = sqlite3.connect('database.db')
         self.conn.row_factory = sqlite3.Row
 
+
+import sqlite3
+conn = sqlite3.connect('example.db')
+print("Connection established ..........")
