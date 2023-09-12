@@ -32,6 +32,7 @@
                       <input type="password" class="form-control" aria-label="Password" id="password" name="password">
                     </div>
                     <button style="border: none; background-color: #000938d4; color: whitesmoke; border-radius: 25px; padding: 10px;">Register</button>
+                    <p id="error_message">Incorrect credentials. Please try again.</p>
                   </form>
                 </div> 
             </div>
@@ -39,5 +40,43 @@
         </div>
       </div>  
     </div>
+
+    <script>
+      document.getElementById("error_username").style.display="none";
+      document.getElementById("error_password").style.display="none";
+  
+      function btnSubmit() {
+       let username = document.getElementById("username").value;
+       let password = document.getElementById("password").value;
+     
+  
+       if(username == "" || username == null) {
+           document.getElementById("error_name").style.display="block";
+       }
+       function checkPassword() {
+              // Get the entered password from the input field
+              var enteredPassword = document.getElementById("password").value;
+  
+              // Define the expected password (change this to your actual password)
+              var expectedPassword = "secret";
+  
+              // Check if the entered password matches the expected password
+              if (enteredPassword === expectedPassword) {
+                  // Password is correct, do something (e.g., redirect to another page)
+                  alert("Password is correct! Redirecting...");
+                  // You can add code here to redirect the user or perform other actions
+              } else {
+                  // Password is incorrect, display error message
+                  document.getElementById("error_message").style.display = "block";
+              }
+  
+        else {
+            document.getElementById("error_username").style.display="none";
+            document.getElementById("error_password").style.display="none";
+            alert("Success!");
+        }
+        }
+      }
+    </script>
   </body>
 </html>

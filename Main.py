@@ -1,6 +1,6 @@
 from flask import Flask
 import sqlite3
-from flask import render_template, url_for, request, redirect
+from flask import render_template, url_for, request, redirect, flash
 from controllers.Web import Web
 from Database import Database
 from Models.Users import Users
@@ -45,8 +45,21 @@ def register():
 def otp():
     return render_template("otp.html")
 
-@app.route("/login")
+@app.route("/login", methods=('GET', 'POST'))
 def login():
+    if request.method == 'POST':
+        username  = request.form['username']
+        password = request.form['password']
+
+        user = Users()
+        tempUser = user.authenticate(username, password)
+
+        if tempUser:
+            return redirect(url_for('homepage'))
+        else:
+            flash('wrong credentials')
+            return redirect(url_for('login'))
+
     return render_template("login.html")
 
 @app.route("/essay", methods=('GET', 'POST'))

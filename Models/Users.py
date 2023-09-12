@@ -22,6 +22,14 @@ class Users:
         self.conn.close()
         return data
     
+    def authenticate(self, username, password):
+        self.data = []
+        user = self.conn.execute('SELECT * FROM user WHERE username = ? AND pass = ?', (username, password)).fetchone()
+        self.conn.close()
+
+        return user
+
+
     def insert(self, username, email, password):
         conn = get_db_connection()
         # cursor = conn.cursor()

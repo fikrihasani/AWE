@@ -7,11 +7,11 @@
 {{ super() }}
 {% endblock %}
 {% block content %}
-<h1>About App</h1>
+<h1 style="margin: 20px 0;">About App</h1>
 <div class="container-lg text-center">
     <img src="{{url_for('static', filename='assets/logo.png')}}" alt="" style = "background-color: #3976AC;" class="img-fluid" width="300px">
     <br>
-    <h3 style="color: black;">Description</h3>
+    <h3 style="color: black; margin: 20px 0;">Description</h3>
     <p style="color: black;" class="desc">Automated Paper Evaluator for EFL is an automated paper tool dedicated to
         English as Foreign Language (EFL) users.
         The measures are contextualized for EFL's academic writing.</p>
@@ -24,8 +24,8 @@
         score and brief feedback. Once the essay is inputted the result will be recorded on front page.
         The score and feedback are not final score, but come as a basis of further writing improvement.</p>
 </div>
-<footer>
-    <h4 style="color: black;">Contact Us</h4>
+<footer style="margin-left: 20px;">
+    <h4 style="color: black; margin: 20px 0;">Contact Us</h4>
     <div class="container-fluid d-flex">
         <i style="color: black;" class="fa-solid fa-phone"></i>
         <p style="color: black; margin-left: 10pt; margin-top: -5px;"> +62 855-1007-551 </p>
