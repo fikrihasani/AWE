@@ -6,7 +6,9 @@ CREATE TABLE user (
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     username VARCHAR(10) NOT NULL,
     email VARCHAR(10) NOT NULL,
-    pass VARCHAR(10) NOT NULL
+    pass VARCHAR(10) NOT NULL,
+	randomcode VARCHAR(20) NOT NULL,
+	DefiniteUser INTEGER
 );
 
 CREATE TABLE essay (
