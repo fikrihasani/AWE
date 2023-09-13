@@ -1,6 +1,6 @@
 from flask import Flask
 import sqlite3
-from flask import render_template, url_for, request, redirect, flash
+from flask import render_template, url_for, request, redirect, flash, session
 from controllers.Web import Web
 from Database import Database
 from Models.Users import Users
@@ -35,7 +35,7 @@ def register():
         password = request.form['password']
 
         user = Users()
-        user.insert(username, email, password)
+        user_id = user.insert(username, email, password)
 
         return redirect(url_for('homepage'))
 
