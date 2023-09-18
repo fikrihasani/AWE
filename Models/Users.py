@@ -1,4 +1,5 @@
 from Database import Database
+from random import randint
 import sqlite3
 
 def get_db_connection():
@@ -33,8 +34,8 @@ class Users:
     def insert(self, username, email, password):
         conn = get_db_connection()
         # cursor = conn.cursor()
-        conn.execute('INSERT INTO user (username, email, pass) VALUES (?, ?, ?)',
-                       (username, email, password))
+        conn.execute('INSERT INTO user (username, email, pass, randomcode, DefiniteUser) VALUES (?, ?, ?, ?, ?)',
+                       (username, email, password, randint(100000, 999999), 0))
         
         conn.commit()
         conn.close()

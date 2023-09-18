@@ -1,13 +1,17 @@
 from flask import Flask
 import sqlite3
-from flask import render_template, url_for, request, redirect, flash, session
+from flask import render_template, url_for, request, redirect, session
 from controllers.Web import Web
 from Database import Database
 from Models.Users import Users
 from Models.Article import Article
 
 app = Flask(__name__)
-app.secret_key="__privatekey__"
+# app.secret_key="__privatekey__"
+app.config['SECRET_KEY'] = 'private_key'
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_PERMANENT'] = False
+
 
 web = Web()
 def get_db_connection():
@@ -17,9 +21,11 @@ def get_db_connection():
 
 @app.route("/")
 def homepage():
+    if not session.get("username"):
+        return redirect("/login")
     article = Article()
     data = article.getOne(1)
-    return render_template("home.html", articles=data)
+    return render_template("home.html", articles=data, username=session['username'], email=session['email'], password=session['pass'])
     
 
 @app.route("/about")
@@ -55,10 +61,13 @@ def login():
         tempUser = user.authenticate(username, password)
 
         if tempUser:
+            session['username']  = tempUser['username']
+            session['email'] = tempUser['email']
+            session['pass'] = tempUser['pass']
+
             return redirect(url_for('homepage'))
         else:
-            flash('wrong credentials')
-            return redirect(url_for('login'))
+            print('wrong')
 
     return render_template("login.html")
 
@@ -88,6 +97,15 @@ def users():
     user = Users()
     data = user.getAll()
     return render_template('users.html', users=data)
+
+@app.route('/layout')
+def layout():
+    return render_template('layout.html', username=session['username'], email=session['email'], password=session['pass'])
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
 
 if __name__=='__main__':
     app.run(debug=True)
