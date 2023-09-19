@@ -5,9 +5,9 @@ from controllers.Web import Web
 from Database import Database
 from Models.Users import Users
 from Models.Article import Article
+from random import randint
 
 app = Flask(__name__)
-# app.secret_key="__privatekey__"
 app.config['SECRET_KEY'] = 'private_key'
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
@@ -30,7 +30,7 @@ def homepage():
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html", username=session['username'], email=session['email'], password=session['pass'])
 
 @app.route("/register", methods=('GET', 'POST'))
 def register():
@@ -41,7 +41,8 @@ def register():
         password = request.form['password']
 
         user = Users()
-        user_id = user.insert(username, email, password)
+        randomCode = session['randomcode'] = randint(100000, 999999)
+        user_id = user.insert(username, email, password, randomCode)
 
         return redirect(url_for('homepage'))
 
@@ -60,13 +61,15 @@ def login():
         user = Users()
         tempUser = user.authenticate(username, password)
 
-        if tempUser:
+        if tempUser and tempUser['DefiniteUser'] == 1:
+            # make if tempuser definiteuser not == 1, error message for not verified user
             session['username']  = tempUser['username']
             session['email'] = tempUser['email']
             session['pass'] = tempUser['pass']
 
             return redirect(url_for('homepage'))
         else:
+            # error message for username not found
             print('wrong')
 
     return render_template("login.html")
@@ -84,7 +87,7 @@ def essay():
 
         return redirect(url_for('essay'))
     
-    return render_template("essay.html", result = result)
+    return render_template("essay.html", result = result, username=session['username'], email=session['email'], password=session['pass'])
 
 @app.route("/printEssay")
 def printEssay():
@@ -106,6 +109,19 @@ def layout():
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+@app.route('/confirm/<token>')
+def confirm_email(token):
+    print(token)
+    user = Users()
+    tempUser = user.getCode(token)
+    if tempUser:
+        user.setDefinite(token)
+        session['username']  = tempUser['username']
+        session['email'] = tempUser['email']
+        session['pass'] = tempUser['pass']
+
+        return redirect(url_for('homepage'))
 
 if __name__=='__main__':
     app.run(debug=True)

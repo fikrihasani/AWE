@@ -1,4 +1,5 @@
 import sqlite3
+from Models.Users import Users
 
 connection = sqlite3.connect('database.db')
 
@@ -8,9 +9,8 @@ with open('schema.sql') as f:
 
 cur = connection.cursor()
 
-cur.execute("INSERT INTO user (username, email, pass) VALUES (?, ?, ?)",
-            ('fikri', 'mfikrihasani@gmail.com', '12345678')
-            )
+user = Users()
+user.insert('test', 'testing@gmail.com', '12345678', 372293)
 
 
 connection.commit()
