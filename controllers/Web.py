@@ -24,8 +24,8 @@ class Calculate:
     def get_res(self):
         # dummy data
                 # this will be used to handle result data to template of result
-        focus = 7
-        ideas = 4
+        focus = 0
+        ideas = 0
 
         res = {
             "focus":focus,

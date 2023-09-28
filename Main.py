@@ -109,7 +109,7 @@ def essay():
     
     
 
-    return render_template("essay.html", result = result, username=session['username'], email=session['email'], password=session['pass'])
+    return render_template("essay.html", result = result, username=session['username'], email=session['email'], password=session['pass'], article="")
 
 @app.route("/printEssay")
 def printEssay():
