@@ -11,7 +11,7 @@
   </head>
   <body style="position: relative;">
     {% block nav %}
-    <div class="wrapper">
+    <div class="wrapper" onclick="">
       <div class="heading">
         <nav class="navbar navbar-expand-lg" style="text-align: center; background-color: #3976AC;">
           <div class="container-fluid" style="margin: 1vw 2vw;">
@@ -22,7 +22,7 @@
     
             <h1 style="color: whitesmoke;">Welcome!</h1>
     
-            <button class="hamburger-button btn" onclick="document.querySelector('.animated-hamburger').classList.toggle('open'); document.querySelector('.collapse').classList.toggle('show')" style="background-color: transparent; border: none; z-index: 2;">
+            <button class="hamburger-button btn" onclick="document.querySelector('.animated-hamburger').classList.toggle('open'); document.querySelector('.collapse').classList.toggle('show'); document.querySelector('.ghost-backdrop').classList.toggle('show');" style="background-color: transparent; border: none; z-index: 2;">
               <!-- <i class="animated-hamburger fa-2x fa-solid fa-bars" style="color: whitesmoke;"></i> -->
               <div class="animated-hamburger"><span></span><span></span><span></span></div>
             </button>
@@ -39,6 +39,9 @@
         {% endblock %}
       </div>
     </div> <!-- close wrapper div-->
+    <div class="ghost-backdrop">
+
+    </div>
     <div id="collapseSidebar" class="sidebar collapse position-fixed top-0 end-0" style="position: fixed; height: 100vh; background-color: #7EC7F0;">
       <div class="container-fluid" style="height: 100%;">
         <div class="row row-cols-1" style=" height: 100%;">
@@ -112,6 +115,19 @@
         </div>
       </div>
     </div>
+
+    <script>
+      var backdrop = document.querySelector('.ghost-backdrop');
+      var sidebar = document.querySelector(".collapse");
+
+      backdrop.addEventListener("click", function(){
+        backdrop.classList.toggle('show');
+        document.querySelector('.animated-hamburger').classList.toggle('open');
+        sidebar.classList.toggle('show');
+
+      })
+    </script>
+
   </body>
 
 </html>
