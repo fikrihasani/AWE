@@ -5,7 +5,11 @@ from controllers.Web import Web
 from Database import Database
 from Models.Users import Users
 from Models.Article import Article
+from Models.Mail import Mail
 from random import randint
+import pickle
+import numpy as np
+from sentence_transformers import SentenceTransformer
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'private_key'
@@ -30,6 +34,8 @@ def homepage():
 
 @app.route("/about")
 def about():
+    if not session.get("username"):
+        return redirect("/login")
     return render_template("about.html", username=session['username'], email=session['email'], password=session['pass'])
 
 @app.route("/register", methods=('GET', 'POST'))
@@ -44,12 +50,16 @@ def register():
         randomCode = session['randomcode'] = randint(100000, 999999)
         user_id = user.insert(username, email, password, randomCode)
 
-        return redirect(url_for('homepage'))
+        return redirect(url_for('otp', email=email, randomCode=randomCode))
 
     return render_template("register.html")
 
 @app.route("/otp")
 def otp():
+    email = request.args['email']
+    randomCode = request.args['randomCode']
+    mail = Mail()
+    mail.send_verification(email, randomCode)
     return render_template("otp.html")
 
 @app.route("/login", methods=('GET', 'POST'))
@@ -76,6 +86,9 @@ def login():
 
 @app.route("/essay", methods=('GET', 'POST'))
 def essay():
+    if not session.get("username"):
+        return redirect("/login")
+    
     result = web.result()
 
     if request.method == 'POST':
@@ -85,8 +98,17 @@ def essay():
         article = Article()
         article.insert(essay, userID)
 
+        mdl = SentenceTransformer('all-MiniLM-L6-v2')
+        model1 = pickle.load(open("finalized_model_svm_style.model","rb"))
+        model2 = pickle.load(open("finalized_model_svm.model","rb"))
+        score1 = model1.predict(np.array([mdl.encode(essay)]))[0]
+        score2 = model2.predict(np.array([mdl.encode(essay)]))[0]
+        print("score 1: " + str(score1) + " score 2: " + str(score2))
+
         return redirect(url_for('essay'))
     
+    
+
     return render_template("essay.html", result = result, username=session['username'], email=session['email'], password=session['pass'])
 
 @app.route("/printEssay")
