@@ -9,6 +9,7 @@ CREATE TABLE user (
     pass VARCHAR(50) NOT NULL,
 	randomcode VARCHAR(20) NOT NULL,
 	DefiniteUser INTEGER
+	
 );
 
 CREATE TABLE essay (
@@ -17,4 +18,6 @@ CREATE TABLE essay (
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     content TEXT NOT NULL,
     FOREIGN KEY (userId) REFERENCES user(id)
+	scoreFocusnPurpose INTEGER NOT NULL,
+	ideasnDevelopment INTEGER NOT NULL,
 );
