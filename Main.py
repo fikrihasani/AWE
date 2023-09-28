@@ -21,11 +21,11 @@ def get_db_connection():
 
 @app.route("/")
 def homepage():
-    if not session.get("username"):
-        return redirect("/login")
-    article = Article()
-    data = article.getOne(1)
-    return render_template("home.html", articles=data, username=session['username'], email=session['email'], password=session['pass'])
+   # if not session.get("username"):
+        #return redirect("/login")
+    #article = Article()
+   # data = article.getOne(1)
+    return render_template("home.html", articles= None, username= None, email= None, password= None)
     
 
 @app.route("/about")
@@ -103,7 +103,7 @@ def users():
 
 @app.route('/layout')
 def layout():
-    return render_template('layout.html', username=session['username'], email=session['email'], password=session['pass'])
+    return render_template('layout.html', username= None, email= None, password= None)
 
 @app.route('/logout')
 def logout():
