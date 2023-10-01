@@ -10,16 +10,18 @@
 {% set counter = 0 %}
 <div class="container">
     <div class="row">
+    {% if articles %}
     {% for article in articles %}
         <div class="col-lg-3 col-md-3">
             <div class="card" style="margin: 20pt;">
                 <div class="card-body">
-                    <p class="card-text">{{ article[3] }}</p>
-                    <a href="{{url_for('essay')}}" class="card-link">View</a>
+                    <p class="card-text truncate-line-clamp">{{ article[3] }}</p>
+                    <a href="{{url_for('essay', id=article[0])}}" class="card-link">View</a>
                 </div>
             </div>
         </div>
     {% endfor %}
+    {% endif %}
     <a href="{{url_for('essay')}}" class="float">
         <i class="fa fa-plus my-float"></i>
         </a>

@@ -11,15 +11,15 @@ class Article:
         self.conn = Database().conn
         self.data = None
 
-    def getAll(self):
-        data = []
-        for i in range(12):
-            data.append("this is article the "+str(i))
+    def getOne(self, essayId):
+        self.data = []
+        data = self.conn.execute("SELECT * FROM essay where id = ?", (essayId,)).fetchone()
+        self.conn.close()
         return data
     
-    def getOne(self,id):
+    def getAll(self,id):
         self.data = []
-        data = self.conn.execute("SELECT * FROM essay where userId = "+str(id)).fetchall()
+        data = self.conn.execute("SELECT * FROM essay WHERE userId = ?", (id,)).fetchall()
         self.conn.close()
         return data 
     
@@ -29,13 +29,31 @@ class Article:
         self.conn.close()
         return data
 
-    def insert(self, essayInput, userID):
+    def insert(self, essayInput, userID, score1, score2):
         conn = get_db_connection()
         # cursor = conn.cursor()
-        conn.execute('INSERT INTO essay (content, userID) VALUES (?, ?)',
-                       (essayInput, userID))
+        print("SCORES = " , score1  , score2)
+        str_score1 = str(score1)
+        str_score2 = str(score2)
+        conn.execute('INSERT INTO essay (content, userID, scoreFocusnPurpose, ideasnDevelopment) VALUES (?, ?, ?, ?)',
+                       (essayInput, userID, str_score1, str_score2))
+        
+        lastId = conn.execute("SELECT last_insert_rowid()").fetchone()[0]
+        print(lastId)
         
         conn.commit()
         conn.close()
 
-    
+        return lastId
+
+    def updateEssay(self, id, newEssay, newScore1, newScore2):
+        conn = get_db_connection()
+        
+        str_score1 = str(newScore1)
+        str_score2 = str(newScore2)
+        conn.execute('UPDATE essay SET content = ?, scoreFocusnPurpose = ?, ideasnDevelopment = ? WHERE id = ?',
+                        (newEssay, str_score1, str_score2, id))
+        
+        conn.commit()
+        conn.close()
+

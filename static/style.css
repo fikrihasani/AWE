@@ -24,6 +24,14 @@ footer {
     margin: 10px;
 }
 
+.truncate-line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical; 
+    height: 12em;
+    overflow: hidden;
+  }
+
 .ghost-backdrop{
     top: 0;
     left: 0;

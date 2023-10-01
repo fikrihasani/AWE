@@ -9,8 +9,8 @@ with open('schema.sql') as f:
 
 cur = connection.cursor()
 
-user = Users()
-user.insert('test', 'testing@gmail.com', '12345678', 372293)
+# user = Users()
+# user.insert('test', 'testing@gmail.com', '12345678', 372293)
 
 
 connection.commit()

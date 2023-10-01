@@ -17,7 +17,7 @@ CREATE TABLE essay (
     userId INTEGER, 
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     content TEXT NOT NULL,
-    FOREIGN KEY (userId) REFERENCES user(id)
 	scoreFocusnPurpose INTEGER NOT NULL,
 	ideasnDevelopment INTEGER NOT NULL,
+    FOREIGN KEY (userId) REFERENCES user(id)
 );
