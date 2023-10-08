@@ -43,7 +43,7 @@ def homepage():
     reload()
     article = Article()
     data = article.getAll(session['id'])
-    return render_template("home.html", articles= data, id=session['id'], username= session['username'], email= session['email'], password= session['pass'])
+    return render_template("home.html", articles= data, id=session['id'], username= session['username'], email= session['email'], password= session['pass'], randomcode=session['randomcode'])
     
 
 @app.route("/about")
@@ -52,7 +52,7 @@ def about():
         return redirect("/login")
     
     reload()
-    return render_template("about.html", id=session['id'],  username=session['username'], email=session['email'], password=session['pass'])
+    return render_template("about.html", id=session['id'],  username=session['username'], email=session['email'], password=session['pass'], randomcode=session['randomcode'])
 
 @app.route("/register", methods=('GET', 'POST'))
 def register():
@@ -94,6 +94,7 @@ def login():
             session['username']  = tempUser['username']
             session['email'] = tempUser['email']
             session['pass'] = tempUser['pass']
+            session['randomcode'] = tempUser['randomCode']
 
             return redirect(url_for('homepage'))
         else:
@@ -152,7 +153,7 @@ def essay():
             essayId = article.insert(essay, userID, score1, score2)
 
             return redirect(url_for('essay', id=essayId))
-    return render_template("essay.html", id=session['id'], username=session['username'], email=session['email'], password=session['pass'], article=session['essay'], score1=session['score1'], score2=session['score2'])
+    return render_template("essay.html", id=session['id'], username=session['username'], email=session['email'], password=session['pass'], article=session['essay'], score1=session['score1'], score2=session['score2'], randomcode=session['randomcode'])
 
 @app.route("/printEssay")
 def printEssay():
@@ -168,7 +169,7 @@ def users():
 
 @app.route('/layout')
 def layout():
-    return render_template('layout.html', username= session['username'], email= session['email'], password= session['pass'])
+    return render_template('layout.html', username= session['username'], email= session['email'], password= session['pass'], randomcode=session['randomcode'])
 
 @app.route('/logout')
 def logout():
@@ -186,6 +187,7 @@ def confirm_email(token):
         session['username']  = tempUser['username']
         session['email'] = tempUser['email']
         session['pass'] = tempUser['pass']
+        session['randomcode'] = tempUser['randomCode']
 
         return redirect(url_for('homepage'))
 

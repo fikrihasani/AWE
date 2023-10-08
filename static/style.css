@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 body {
-    background-color: #E9F4FF;
+    background-color: #D6DDE0;
     font-family: 'Libre Franklin', sans-serif;
 }
 
@@ -103,7 +103,7 @@ footer {
 
 .animated-hamburger.open span:nth-child(1) {
     top: 11px;
-    background-color: #3976AC;
+    background-color: #344B87;
     -webkit-transform: rotate(135deg);
     -moz-transform: rotate(135deg);
     -o-transform: rotate(135deg);
@@ -117,7 +117,7 @@ footer {
 
 .animated-hamburger.open span:nth-child(3) {
     top: 11px;
-    background-color: #3976AC;
+    background-color: #344B87;
     -webkit-transform: rotate(-135deg);
     -moz-transform: rotate(-135deg);
     -o-transform: rotate(-135deg);
@@ -150,7 +150,7 @@ footer {
 	height:60px;
 	bottom:40px;
 	right:40px;
-	background-color : #9BA6CC;
+	background-color :#446FA0;
 	color:#FFF;
 	border-radius:50px;
 	text-align:center;
@@ -167,4 +167,28 @@ footer {
 	bottom:10px;
 	right:55px;
 	text-align:center;
+}
+
+.navbar-link{
+    font-style: italic;
+    color: black;
+    transition: 1s;
+
+}
+
+.navbar-link:hover{
+    padding-right: 30px;
+    transition: 1s;
+}
+
+.changepass p{
+    background-color: white;
+    color: black;
+    transition: 0.5s;
+}
+
+.changepass:hover p{
+    color: white;
+    background-color: black;
+    transition: 0.5s;
 }
