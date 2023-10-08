@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     {% endblock %}
   </head>
-  <body style="position: relative;">
+  <body style="position: relative; min-height: calc(100vh - 30px);">
     {% block nav %}
     <div class="wrapper" onclick="">
       <div class="heading">
@@ -20,7 +20,7 @@
               <img src="{{url_for('static', filename='assets/logo.png')}}" alt="" class="img-fluid" width="70px">
             </a>
     
-            <h1 style="color: whitesmoke;">Welcome!</h1>
+            <h1 style="color: whitesmoke; font-weight: 600;">Welcome!</h1>
     
             <button class="hamburger-button btn" onclick="document.querySelector('.animated-hamburger').classList.toggle('open'); document.querySelector('.collapse').classList.toggle('show'); document.querySelector('.ghost-backdrop').classList.toggle('show');" style="background-color: transparent; border: none; z-index: 2;">
               <!-- <i class="animated-hamburger fa-2x fa-solid fa-bars" style="color: whitesmoke;"></i> -->
@@ -32,8 +32,8 @@
     
       
       {% endblock %}
-      <div id="content">{% block content %}{% endblock %}</div>
-      <div id="footer"  style="position: absolute; bottom: -30px; padding: 15px;">
+      <div id="content" style="">{% block content %}{% endblock %}</div>
+      <div id="footer" style="position: absolute; bottom: -30px; padding: 15px;">
         {% block footer %}
         &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
         {% endblock %}
@@ -91,17 +91,23 @@
           <div class="row">
             <div class="col-5 text-center align-self-center">
               <img src="{{url_for('static', filename='/assets/default_profile.png')}}" alt="" class="img-fluid">
-              <p style="margin-top: 30px;"><input type="text" value="{{username}}" style="text-align: center; background-color: transparent; border: none; color: whitesmoke;"></p>
+              <p style="margin-top: 30px;"><input type="text" value="{{username}}" readonly style="text-align: center; background-color: transparent; border: none; color: whitesmoke;"></p>
             </div>
             <div class="col-6 align-self-center">
-              <div class="vstack gap-4">
+              <div class="vstack gap-2">
+                <!-- <div class="box">
+                  <h2 style="text-align: left; margin-bottom: -5px;">{{username}}</h2>
+                </div> -->
+                <!-- <hr style="border: 2px solid white;"> -->
                 <div class="box">
-                  <p>Email</p>
-                  <input class="form-control" type="text" value="{{email}}">
+                  <p style="margin-bottom: 10px;">Email</p>
+                  <input class="form-control" type="text" value="{{email}}" readonly>
                 </div>
                 <div class="box">
                   <p>Password</p>
-                  <input class="form-control" type="text" value="{{password}}">
+                  <input class="form-control" type="password" value="" style="background-color: black; border: black;" disabled>
+                  <!-- <a href="#" style="text-align: left; margin-right: 100px; float: left;">Edit password</a> -->
+                  <!-- <a href="#" style="float: right; width: 30%; text-align: right;">Edit password</a> -->
                 </div>
                 <button class="btn align-self-center" style="background-color: #000938; color: whitesmoke; width: auto; padding: 7px 30px 9px; border-radius: 15px; margin-top: 10px;">
                   Save

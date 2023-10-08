@@ -41,6 +41,13 @@ class Users:
         self.conn.close()
 
         return user
+    
+    def getEmail(self, email):
+        self.data = []
+        user = self.conn.execute('SELECT * FROM user WHERE email = ?', (email,)).fetchone()
+        self.conn.close()
+
+        return user
 
     def insert(self, username, email, password, randomcode):
         conn = get_db_connection()
@@ -61,3 +68,10 @@ class Users:
         conn.commit()
         conn.close()
     
+    def updatePassword(self, token, password):
+        conn = get_db_connection()
+        password_hashed = generate_password_hash(password)
+        conn.execute('UPDATE user SET pass = ? WHERE randomcode = ?',
+                        (password_hashed, token))
+        conn.commit()
+        conn.close()

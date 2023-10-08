@@ -14,7 +14,13 @@ mail = Mail(app)
 
 class Mail:
     def send_verification(self, email, token):
-        msg = Message('AAPE Verification', sender = 'aape.binus@gmail.com', recipients = [email])
+        msg = Message('AAPE Verification', sender = 'aapebinus2023@gmail.com', recipients = [email])
         link = url_for('confirm_email', token = token, _external = True)
         msg.body = "Click on this link to verify your account: {}".format(link)
+        mail.send(msg)
+
+    def send_reset_password(self, email, token):
+        msg = Message('Reset Your Password for AAPE', sender = 'aapebinus2023@gmail.com', recipients = [email])
+        link = url_for('reset_password', token = token, _external = True)
+        msg.body = "Click on this link to reset your password: {}".format(link)
         mail.send(msg)

@@ -27,6 +27,13 @@ def reload():
     session['score1'] = int(0)
     session['score2'] = int(0)
     session.pop('essayId', None)
+    session['essayId'] = None
+
+def send_rp_email(email):
+    user = Users()
+    tempUser = user.getEmail(email)
+    mail = Mail()
+    mail.send_reset_password(email,tempUser['randomcode'])
 
 @app.route("/")
 def homepage():
@@ -182,6 +189,22 @@ def confirm_email(token):
 
         return redirect(url_for('homepage'))
 
+@app.route('/fillEmail', methods=('GET', 'POST'))
+def fill_email():
+    if request.method == 'POST' :
+        email = request.form['email']
+        send_rp_email(email)
+    return render_template("fillEmail.html")
+
+@app.route('/resetPassword/<token>', methods=('GET', 'POST'))
+def reset_password(token):
+    if request.method == 'POST' :
+        password = request.form['password']
+        user = Users()
+        user.updatePassword(token, password)
+        return redirect(url_for('homepage'))
+    else:
+        return render_template("resetPassword.html", token=token)
 if __name__=='__main__':
     app.run(debug=True)
     

@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Index{% endblock %}
+{% block title %}About App{% endblock %}
 {% block head %}
 {{ super() }}
 {% endblock %}
@@ -7,9 +7,9 @@
 {{ super() }}
 {% endblock %}
 {% block content %}
-<h1 style="margin: 20px 0;">About App</h1>
+<!-- <h1 style="margin: 20px 0;">About App</h1> -->
 <div class="container-lg text-center">
-    <img src="{{url_for('static', filename='assets/logo.png')}}" alt="" style = "background-color: #3976AC;" class="img-fluid" width="300px">
+    <img src="{{url_for('static', filename='assets/logo.png')}}" alt="" style = "background-color: #3976AC; margin-top: 20px;" class="img-fluid" width="300px">
     <br>
     <h3 style="color: black; margin: 20px 0;">Description</h3>
     <p style="color: black;" class="desc">Automated Paper Evaluator for EFL is an automated paper tool dedicated to
