@@ -18,16 +18,18 @@
           <div class="col-lg-6 align-self-center">
             <div class="container-fluid" style="background-color: #FFFEF8; width: 90%; padding: 10%; box-shadow: 0px 0px 23px 14px rgba(0, 0, 0, 0.25);">
                 <div class="row">
-                  <form class="vstack gap-4" action="/login" method="POST">
+                  <form id="loginForm" class="vstack gap-4" action="/login" method="POST">
                     <div class="input-container">
                       <label for="Username">Username</label>
                       <input type="text" class="form-control" aria-label="Username" id="username" name="username">
+                      <p id="msg-1" style="color: red; font-size: 13px;"></p>
                     </div>
                     <div class="input-container">
                       <label for="Password">Password</label>
                       <input type="password" class="form-control" aria-label="Password" id="password" name="password">
+                      <p id="msg-2" style="color: red; font-size: 13px;"></p>
                     </div>
-                    <button style="border: none; background-color: #000938d4; color: whitesmoke; border-radius: 25px; padding: 10px;">Login</button>
+                    <button class="login-submit-button" type="submit" style="border: none; background-color: #000938d4; color: whitesmoke; border-radius: 25px; padding: 10px;">Login</button>
                     <a href="{{url_for('fill_email')}}" style="text-align: center;">forgot password</p>
                   </form>
                 </div> 
@@ -36,5 +38,6 @@
         </div>
       </div>  
     </div>
+    <script src="{{url_for('static', filename='loginValidation.js')}}"></script>
   </body>
 </html>

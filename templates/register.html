@@ -18,24 +18,28 @@
           <div class="col-lg-6 align-self-center">
             <div class="container-fluid" style="background-color: #FFFEF8; width: 90%; padding: 10%; box-shadow: 0px 0px 23px 14px rgba(0, 0, 0, 0.25);">
                 <div class="row">
-                  <form class="vstack gap-4" action="/register" method="POST">
+                  <form id="registerForm" class="vstack gap-4" action="/register" method="POST">
                     <div class="input-container">
                       <label for="Username">Username</label>
                       <input type="text" class="form-control" aria-label="Username" id="username" name="username">
+                      <p id="msg-1" style="color: red; font-size: 13px;"></p>
                     </div>
                     <div class="input-container">
                       <label for="Email">Email</label>
                       <input type="email" class="form-control" aria-label="Email" id="email" name="email">
+                      <p id="msg-3" style="color: red; font-size: 13px;"></p>
                     </div>
                     <div class="input-container">
                       <label for="Password">Password</label>
                       <input type="password" class="form-control" aria-label="Password" id="password" name="password">
+                      <p id="msg-2" style="color: red; font-size: 13px;"></p>
                     </div>
                     <div class="input-container">
                       <label for="Confirm Password">Confirm Password</label>
-                      <input type="password" class="form-control" aria-label="Password" id="conf-password" name="conf-password">
+                      <input type="password" class="form-control" aria-label="Password" id="confpassword" name="confpassword">
+                      <p id="msg-4" style="color: red; font-size: 13px;"></p>
                     </div>
-                    <button style="border: none; background-color: #000938d4; color: whitesmoke; border-radius: 25px; padding: 10px; margin: 30px 0 20px;">Register</button>
+                    <button class="register-submit-button" type="submit" style="border: none; background-color: #000938d4; color: whitesmoke; border-radius: 25px; padding: 10px; margin: 30px 0 20px;">Register</button>
                     <!-- <p id="error_message">Incorrect credentials. Please try again.</p> -->
                   </form>
                 </div> 
@@ -45,42 +49,6 @@
       </div>  
     </div>
 
-    <script>
-      document.getElementById("error_username").style.display="none";
-      document.getElementById("error_password").style.display="none";
-  
-      function btnSubmit() {
-       let username = document.getElementById("username").value;
-       let password = document.getElementById("password").value;
-     
-  
-       if(username == "" || username == null) {
-           document.getElementById("error_name").style.display="block";
-       }
-      //  function checkPassword() {
-      //         // Get the entered password from the input field
-      //         var enteredPassword = document.getElementById("password").value;
-  
-      //         // Define the expected password (change this to your actual password)
-      //         var expectedPassword = "secret";
-  
-      //         // Check if the entered password matches the expected password
-      //         if (enteredPassword === expectedPassword) {
-      //             // Password is correct, do something (e.g., redirect to another page)
-      //             alert("Password is correct! Redirecting...");
-      //             // You can add code here to redirect the user or perform other actions
-      //         } else {
-      //             // Password is incorrect, display error message
-      //             document.getElementById("error_message").style.display = "block";
-      //         }
-  
-        else {
-            document.getElementById("error_username").style.display="none";
-            document.getElementById("error_password").style.display="none";
-            alert("Success!");
-        }
-        // }
-      }
-    </script>
+    <script src="{{url_for('static', filename='registerValidation.js')}}"></script>
   </body>
 </html>

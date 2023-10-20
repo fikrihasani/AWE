@@ -2,6 +2,7 @@
 {% block title %}Index{% endblock %}
 {% block head %}
     {{ super() }}
+    <script src="{{url_for('static', filename='essayValidation.js')}}"></script>
 {% endblock %}
 {% block nav %}
     {{ super() }}
@@ -10,11 +11,10 @@
     <div class="container-fluid">
         <div class="row" style="margin: 20pt; height: auto;">
             <div class="col-lg-6">
-                <form action="/essay" method="POST">
+                <form id="essayForm" action="/essay" method="POST">
                     <div class="form-outline" style="position: relative;">
                         <textarea class="textarea form-control" id="essayInput" name="essayInput" rows="30" style="resize: none; padding: 20pt; margin-top: 20pt; border-radius: 0; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.511); position: relative;" placeholder="Ctrl+V or paste your text here...">{{article}}</textarea>
-                        <div class="check" style="position: absolute;"> <button type="submit" style="background-color:#000938; color: #fff; padding: 10px 25px; border: none; border-radius: 10px;" formmethod="post">Check</button></div>
-                        
+                        <div class="check" style="position: absolute;"> <button type="essay-submit-button" type="submit" style="background-color:#000938; color: #fff; padding: 10px 25px; border: none; border-radius: 10px;">Check</button></div>
                     </div>
                 </form>
             </div>
