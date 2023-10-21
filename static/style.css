@@ -169,7 +169,7 @@ footer {
 	text-align:center;
 }
 
-.navbar-link{
+.navbar-link, .login-register-links{
     font-style: italic;
     color: black;
     transition: 1s;
@@ -191,4 +191,10 @@ footer {
     color: white;
     background-color: black;
     transition: 0.5s;
+}
+
+
+.login-register-links:hover{
+    color: lightskyblue;
+    transition: 0.3s;
 }

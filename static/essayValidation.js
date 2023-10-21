@@ -1,9 +1,22 @@
 var essaySubmitButton = document.querySelector('.essay-submit-button');
-essaySubmitButton.addEventListener("click", essayFormValidation);
-
 var essay = document.getElementById("essayInput")
 
-alert("hey");
+checkEssay();
+
+// alert("hey");
+
+function checkEssay(){
+    if(essay.value === ''){
+        // alert("none");
+        essaySubmitButton.disabled=true;
+        essaySubmitButton.style.backgroundColor="gray";
+    }
+    else{
+        // alert("have");
+        essaySubmitButton.disabled=false;
+        essaySubmitButton.style.backgroundColor="#000938";
+    }
+}
 
 function essayFormValidation(e){
     e.preventDefault();
@@ -11,7 +24,7 @@ function essayFormValidation(e){
     var flag = 0;
 
     //validate all fields not empty
-    if(essay.value == '' ){
+    if(essay.value === '' ){
         flag = 1;
     }
     else alert(essay.value);
