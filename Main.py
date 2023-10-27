@@ -124,6 +124,9 @@ def essay():
         session['essay'] = essayNow['content']
         session['score1'] = essayNow['scoreFocusnPurpose']
         session['score2'] = essayNow['ideasnDevelopment']
+        # session['desc1'] = article.getDesc1(session['score1'])
+        # session['desc2'] = article.getDesc2(session['score2'])
+        # print(session['desc1'])
         
     if request.method == 'POST':
         if session['essayId']:
@@ -136,6 +139,9 @@ def essay():
             session['essay'] = essay
             session['score1'] = int(score1)
             session['score2'] = int(score2)
+
+            # session['desc1'] = article.getDesc1(int(score1))
+            # session['desc2'] = article.getDesc2(int(score2))
 
             return redirect(url_for('essay', id=essayId))
         else:
@@ -150,10 +156,17 @@ def essay():
             session['score1'] = int(score1)
             session['score2'] = int(score2)
 
+            # session['desc1'] = article.getDesc1(int(score1))
+            # session['desc2'] = article.getDesc2(int(score2))
+
             essayId = article.insert(essay, userID, score1, score2)
 
             return redirect(url_for('essay', id=essayId))
-    return render_template("essay.html", heading="Add your Essay!", id=session['id'], username=session['username'], email=session['email'], password=session['pass'], article=session['essay'], score1=session['score1'], score2=session['score2'], randomcode=session['randomcode'])
+        
+    desc1=article.getDesc1(session['score1'])
+    desc2=article.getDesc2(session['score2'])
+
+    return render_template("essay.html", heading="Add your Essay!", desc1=desc1, desc2=desc2, id=session['id'], username=session['username'], email=session['email'], password=session['pass'], article=session['essay'], score1=session['score1'], score2=session['score2'], randomcode=session['randomcode'])
 
 @app.route("/printEssay")
 def printEssay():

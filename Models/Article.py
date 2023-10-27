@@ -57,3 +57,29 @@ class Article:
         conn.commit()
         conn.close()
 
+    def getDesc1(self, score):
+        desc1 = [
+            "Please input your essay.",
+            "Complete confusion about the topic or inability to grasp the idea of the task; lack of purpose.",
+            "Ideas are limited showing sign of confusion, misunderstanding on the prompt.",
+            "Mostly simplistic essay, signs of confusion, little and no sense of purpose that control the topic.",
+            "Mostly intelligble purposes, unclear objective.",
+            "Competent and well-developed purposes, shows adequate understanding of the topic.",
+            "Full development of clear purposes to the topics chosen, answers corretcly what the instruction asks."
+        ]
+
+        return desc1[score]
+    
+    def getDesc2(self, score):
+        desc2 = [
+            "Please input your essay.",
+            "Clear absence of support for the essay.",
+            "Lack of support for main ideas, and/or illogical development of the essay.",
+            "Insufficient ideas development, irrelevant response to the task given.",
+            "Main points and ideas are only indirectly supported with reasoning; support isn't sufficient or specific, but is loosely relevant to the main points.",
+            "Ideas supported sufficiently; support is sound, valid, and logical.",
+            "Consistent evidence with iriginality and depth; all ideas work together as a unified whole, main points are sufficiently supported with reasons."
+        ]
+
+        return desc2[score]
+
